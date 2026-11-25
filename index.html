@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>PINoy LM SHOP</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">PLM</div><div><b>PINOY LM SHOP</b><small>LEGENDS • RESOURCES • SERVICES</small></div></div>
+  <div class="top-actions"><span class="live-dot">MANUAL ORDERING</span></div>
+</header>
+<main>
+<section id="home" class="view active">
+  <div class="hero"><div class="eyebrow">WELCOME, LORD</div><h1>POWER UP YOUR<br><em>KINGDOM.</em></h1><p>Your trusted shop for Gems, RSS and Lords Mobile services.</p></div>
+  <div class="section-head"><div><small>SHOP MENU</small><h2>Choose a service</h2></div></div>
+  <div class="menu-grid">
+    <button class="menu-card" data-view="gems"><span class="menu-icon">✦</span><b>GEMS SHOP</b><small>Gem calculator & pricing</small><span class="arrow">↗</span></button>
+    <button class="menu-card" data-view="newrss"><span class="menu-icon">▤</span><b>NEW KD RSS</b><small>Closed Kingdoms • KD 1960–2008</small><span class="arrow">↗</span></button>
+    <button class="menu-card" data-view="oldrss"><span class="menu-icon">▤</span><b>OLD KD RSS</b><small>Open Kingdoms • KD 1–1959</small><span class="arrow">↗</span></button>
+    <button class="menu-card" data-view="codes"><span class="menu-icon">▣</span><b>BUY RSS CODE</b><small>Old KD only • ready stock</small><span class="arrow">↗</span></button>
+    <button class="menu-card" data-view="bots"><span class="menu-icon">◈</span><b>BOT SERVICES</b><small>Farm Bot • Mega Bot • Falcon</small><span class="arrow">↗</span></button>
+    <button class="menu-card" data-view="orders"><span class="menu-icon">☷</span><b>MY ORDERS</b><small>Orders saved on this device</small><span class="arrow">↗</span></button>
+  </div>
+  <div class="notice"><b>HOW TO ORDER</b><p>Select your service, complete the order details, then continue to WhatsApp. Review the message and press <b>Send</b> yourself.</p></div>
+</section>
+
+<section id="gems" class="view">
+  <button class="back" data-view="home">← Dashboard</button>
+  <div class="page-title"><small>GEMS SHOP</small><h1>Gem Calculator</h1><p>Choose items and quantities. Totals update automatically.</p></div>
+  <div class="panel">
+    <div class="field"><label>MIGHT PRICE TIER</label><select id="gemTier"><option value="290">Below 800M — ₱290 / 100K gems</option><option value="300">800M–1.3B — ₱300 / 100K gems</option><option value="320">1.3B–2.5B — ₱320 / 100K gems</option></select></div>
+    <div class="field"><label>GEM ITEM CATEGORY</label><div id="gemTabs" class="tabs"></div></div>
+    <div id="gemCatalog" class="product-grid"></div>
+    <div id="gemBreakdown" class="history-list"><p class="muted tiny">Selected items will appear here when quantity is above zero.</p></div><div class="totals"><div><small>TOTAL GEMS</small><strong id="totalGems">0</strong></div><div><small>ESTIMATED PAYMENT</small><strong id="totalPay">₱0.00</strong></div></div>
+    <div class="field"><label>IGN / IN-GAME NAME</label><input id="gemIgn" placeholder="Your in-game name"></div>
+    <div class="field"><label>KINGDOM</label><input id="gemKd" placeholder="e.g. KD 1618"></div>
+    <div class="field"><label>GUILD NAME</label><input id="gemGuild" placeholder="Guild name"></div>
+    <label class="check"><input type="checkbox" id="gemProof"> I will send a screenshot showing my in-game location and guild. I am in a public guild.</label>
+    <button class="primary full" id="gemOrder">PLACE GEMS ORDER → WHATSAPP</button>
+  </div>
+</section>
+
+<section id="newrss" class="view">
+  <button class="back" data-view="home">← Dashboard</button>
+  <div class="page-title"><small>CLOSED KINGDOMS</small><h1>New KD RSS</h1><p>KD 1960–2008 • RSS order only</p></div>
+  <div class="panel">
+    <div class="category-grid" id="newRssTypes"></div>
+    <h3>Bulk RSS Packages</h3><div class="product-grid" id="newRssPackages"></div>
+    <div class="field"><label>SELECTED PACKAGE / RSS</label><input id="newRssChoice" readonly placeholder="Select a package above"></div>
+    <div class="field"><label>QUANTITY</label><div class="stepper"><button data-step="-1" data-target="newRssQty">−</button><input id="newRssQty" value="1" type="number" min="1"><button data-step="1" data-target="newRssQty">+</button></div></div>
+    <div class="field"><label>IGN / KINGDOM</label><input id="newRssIgn" placeholder="IGN • KD number"></div>
+    <div class="field"><label>LOCATION (OPTIONAL IF SENDING SCREENSHOT)</label><input id="newRssLoc" placeholder="[TAG] Name K:000 X:000 Y:000"></div>
+    <label class="check"><input type="checkbox" id="newRssProof"> I will send a screenshot showing my location and guild.</label>
+    <button class="primary full" id="newRssOrder">PLACE RSS ORDER → WHATSAPP</button>
+    <p class="muted tiny">Closed Kingdoms price list needs confirmation. Prices are shown as “Confirm price” until the shop owner sets the final list.</p>
+  </div>
+</section>
+
+<section id="oldrss" class="view">
+  <button class="back" data-view="home">← Dashboard</button>
+  <div class="page-title"><small>OPEN KINGDOMS</small><h1>Old KD RSS</h1><p>KD 1–1959 • Individual RSS & bulk packages</p></div>
+  <div class="panel">
+    <div class="category-grid" id="oldRssTypes"></div>
+    <h3>Bulk RSS Packages</h3><div class="product-grid" id="oldRssPackages"></div>
+    <div class="field"><label>SELECTED PACKAGE / RSS</label><input id="oldRssChoice" readonly placeholder="Select a package above"></div>
+    <div class="field"><label>QUANTITY</label><div class="stepper"><button data-step="-1" data-target="oldRssQty">−</button><input id="oldRssQty" value="1" type="number" min="1"><button data-step="1" data-target="oldRssQty">+</button></div></div>
+    <div class="field"><label>IGN / KINGDOM</label><input id="oldRssIgn" placeholder="IGN • KD number"></div>
+    <div class="field"><label>LOCATION (OPTIONAL IF SENDING SCREENSHOT)</label><input id="oldRssLoc" placeholder="[TAG] Name K:000 X:000 Y:000"></div>
+    <label class="check"><input type="checkbox" id="oldRssProof"> I will send a screenshot showing my location and guild.</label>
+    <button class="primary full" id="oldRssOrder">PLACE RSS ORDER → WHATSAPP</button>
+  </div>
+</section>
+
+<section id="codes" class="view">
+  <button class="back" data-view="home">← Dashboard</button>
+  <div class="page-title"><small>OLD KD CODE SHOP</small><h1>Buy RSS Code</h1><p>Old Kingdoms only • Ready stock, subject to confirmation</p></div>
+  <div class="panel">
+    <div class="notice"><b>OLD KD ONLY</b><p>Choose a package below. Orders are manually confirmed. New KD codes are not available in this shop.</p></div>
+    <div class="product-grid" id="codePackages"></div>
+    <div class="field"><label>SELECTED CODE PACKAGE</label><input id="codeChoice" readonly placeholder="Select a package above"></div>
+    <div class="field"><label>QUANTITY</label><div class="stepper"><button data-step="-1" data-target="codeQty">−</button><input id="codeQty" type="number" min="1" value="1"><button data-step="1" data-target="codeQty">+</button></div></div>
+    <div class="field"><label>IGN / KINGDOM</label><input id="codeIgn" placeholder="IGN • KD number"></div>
+    <button class="primary full" id="codeOrder">ORDER RSS CODE → WHATSAPP</button>
+    <p class="muted tiny">Stock counts must be confirmed manually by the shop owner. No live/shared inventory is connected yet.</p>
+  </div>
+</section>
+
+<section id="bots" class="view">
+  <button class="back" data-view="home">← Dashboard</button>
+  <div class="page-title"><small>BOT SERVICES</small><h1>Automation services</h1><p>Choose your service and subscription period.</p></div>
+  <div class="panel">
+    <div class="product-grid bot-grid">
+      <button class="product selectable" data-bot="Farm Bot Setup + First Month" data-price="170"><b>FARM BOT SETUP</b><strong>₱170</strong><small>Setup + first month</small></button>
+      <button class="product selectable" data-bot="Farm Bot Monthly Renewal" data-price="150"><b>FARM BOT MONTHLY</b><strong>₱150</strong><small>Monthly renewal</small></button>
+      <button class="product selectable" data-bot="Mega Bot (Farm + War)" data-price="200"><b>MEGA BOT</b><strong>₱200</strong><small>Farm + War • monthly</small></button>
+      <button class="product selectable" data-bot="Falcon Tracker" data-price="0"><b>FALCON TRACKER</b><strong>PM FOR PRICE</strong><small>Ask for availability and price</small></button>
+    </div>
+    <div class="field"><label>SUBSCRIPTION PERIOD</label><select id="botPeriod"><option value="1">1 Month</option><option value="6">6 Months</option><option value="12">12 Months</option></select></div>
+    <div class="field"><label>SELECTED SERVICE</label><input id="botChoice" readonly placeholder="Choose a service above"></div>
+    <div class="field"><label>IGN</label><input id="botIgn" placeholder="In-game name"></div>
+    <div class="field"><label>KINGDOM</label><input id="botKd" placeholder="Kingdom number"></div>
+    <div class="field"><label>IGG EMAIL</label><input id="botEmail" type="email" placeholder="IGG account email"></div>
+    <div class="field"><label>IGG PASSWORD</label><input id="botPassword" type="password" autocomplete="off" placeholder="Only provided for manual processing"></div>
+    <label class="check risk"><input type="checkbox" id="botRisk"> I understand and accept: <b>USE AT YOUR OWN RISK.</b></label>
+    <p class="muted tiny">Security notice: This static website does not transmit or save your password. Do not enter a password unless you have confirmed a secure method directly with the shop owner. Password is never included in the WhatsApp message.</p>
+    <button class="primary full" id="botOrder">PLACE BOT ORDER → WHATSAPP</button>
+  </div>
+</section>
+
+<section id="orders" class="view">
+  <button class="back" data-view="home">← Dashboard</button>
+  <div class="page-title"><small>ORDER HISTORY</small><h1>My Orders</h1><p>History stored locally in this browser only.</p></div>
+  <div class="panel"><div id="orderHistory" class="history-list"></div><button class="secondary full" id="clearOrders">Clear local order history</button><p class="muted tiny">Orders are not synchronized across devices and are not visible to the shop owner until you send the WhatsApp message.</p></div>
+</section>
+</main>
+<footer>© <span id="year"></span> PINOY LM SHOP • POWER YOUR KINGDOM</footer>
+</div>
+<script src="app.js"></script>
+</body></html>
